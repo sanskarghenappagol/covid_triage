@@ -1,0 +1,105 @@
+LightGBM available: False | train=677 test=291 cohort2=416
+  positives icu: train=130 test=53 cohort2=77
+  positives mv: train=109 test=43 cohort2=61
+  positives death: train=93 test=41 cohort2=49
+  icu   Clin          best=smoteenn_lasso/1.0/RF  testAUROC=0.670
+  icu   ClinVit       best=raw/nan/RF  testAUROC=0.761
+  icu   ClinVitLab    best=smoteenn/nan/RF  testAUROC=0.830
+  icu   VitLab        best=raw/nan/RF  testAUROC=0.830
+  icu   TriageScore   best=raw/None/LR  testAUROC=0.705
+  mv    Clin          best=raw/nan/RF  testAUROC=0.733
+  mv    ClinVit       best=smoteenn_lasso/0.1/RF  testAUROC=0.802
+  mv    ClinVitLab    best=smoteenn_lasso/1.0/LR  testAUROC=0.831
+  mv    VitLab        best=smoteenn_lasso/1.0/MLP  testAUROC=0.816
+  mv    TriageScore   best=raw/None/LR  testAUROC=0.689
+  death Clin          best=smoteenn_lasso/1.0/LR  testAUROC=0.792
+  death ClinVit       best=raw/nan/RF  testAUROC=0.855
+  death ClinVitLab    best=smoteenn/nan/RF  testAUROC=0.910
+  death VitLab        best=raw/nan/RF  testAUROC=0.896
+  death TriageScore   best=raw/None/LR  testAUROC=0.837
+
+Cohort 2 external validation:
+ task        data  AUROC  AUPRC   ACC
+  icu        Clin  0.677  0.308 0.774
+  icu     ClinVit  0.773  0.455 0.825
+  icu  ClinVitLab  0.814  0.554 0.837
+  icu      VitLab  0.821  0.544 0.846
+  icu TriageScore  0.659  0.312 0.805
+   mv        Clin  0.658  0.246 0.853
+   mv     ClinVit  0.742  0.382 0.827
+   mv  ClinVitLab  0.720  0.371 0.776
+   mv      VitLab  0.795  0.448 0.769
+   mv TriageScore  0.657  0.259 0.841
+death        Clin  0.803  0.338 0.800
+death     ClinVit  0.876  0.490 0.889
+death  ClinVitLab  0.911  0.481 0.865
+death      VitLab  0.890  0.471 0.887
+death TriageScore  0.840  0.381 0.885
+
+Paired one-sided t-tests:
+ task                   H1 metric  mean_diff  p_value
+  icu   Clin > TriageScore  AUROC     0.0149   0.0157
+  icu   Clin > TriageScore  AUPRC    -0.0106   0.9321
+  icu       ClinVit > Clin  AUROC     0.1013   0.0000
+  icu       ClinVit > Clin  AUPRC     0.1560   0.0000
+  icu ClinVitLab > ClinVit  AUROC     0.0397   0.0000
+  icu ClinVitLab > ClinVit  AUPRC     0.0972   0.0000
+  icu    ClinVitLab > Clin  AUROC     0.1410   0.0000
+  icu    ClinVitLab > Clin  AUPRC     0.2532   0.0000
+  icu  ClinVitLab > VitLab  AUROC    -0.0076   0.9998
+  icu  ClinVitLab > VitLab  AUPRC     0.0105   0.0385
+   mv   Clin > TriageScore  AUROC    -0.0017   0.5738
+   mv   Clin > TriageScore  AUPRC    -0.0154   0.9872
+   mv       ClinVit > Clin  AUROC     0.0907   0.0000
+   mv       ClinVit > Clin  AUPRC     0.1456   0.0000
+   mv ClinVitLab > ClinVit  AUROC    -0.0224   1.0000
+   mv ClinVitLab > ClinVit  AUPRC    -0.0110   0.8483
+   mv    ClinVitLab > Clin  AUROC     0.0683   0.0000
+   mv    ClinVitLab > Clin  AUPRC     0.1347   0.0000
+   mv  ClinVitLab > VitLab  AUROC    -0.0764   1.0000
+   mv  ClinVitLab > VitLab  AUPRC    -0.0872   1.0000
+death   Clin > TriageScore  AUROC    -0.0411   1.0000
+death   Clin > TriageScore  AUPRC    -0.0421   0.9947
+death       ClinVit > Clin  AUROC     0.0862   0.0000
+death       ClinVit > Clin  AUPRC     0.1589   0.0000
+death ClinVitLab > ClinVit  AUROC     0.0346   0.0000
+death ClinVitLab > ClinVit  AUPRC    -0.0107   0.8264
+death    ClinVitLab > Clin  AUROC     0.1208   0.0000
+death    ClinVitLab > Clin  AUPRC     0.1481   0.0000
+death  ClinVitLab > VitLab  AUROC     0.0135   0.0000
+death  ClinVitLab > VitLab  AUPRC    -0.0061   0.7491
+
+Top features:
+ task           feature  importance(AUROC drop)
+  icu lab_procalcitonin                  0.0175
+  icu      lab_ferritin                  0.0159
+  icu       lab_lactate                  0.0115
+  icu          vit_spo2                  0.0113
+  icu           lab_crp                  0.0069
+  icu     vit_resp_rate                  0.0069
+  icu           lab_esr                  0.0061
+  icu           lab_ast                  0.0059
+  icu           lab_alt                  0.0043
+  icu           vit_sbp                  0.0036
+   mv          vit_spo2                  0.0354
+   mv        lab_sodium                  0.0223
+   mv           lab_crp                  0.0123
+   mv    lab_lymphocyte                  0.0103
+   mv     vit_resp_rate                  0.0099
+   mv         demo_male                  0.0099
+   mv           vit_bmi                  0.0090
+   mv       clin_nausea                  0.0040
+   mv         clin_acei                  0.0036
+   mv      clin_dyspnea                  0.0036
+death     demo_age_band                  0.0140
+death       lab_lactate                  0.0094
+death          vit_spo2                  0.0076
+death     vit_resp_rate                  0.0053
+death           lab_bun                  0.0044
+death           lab_ast                  0.0040
+death          clin_cad                  0.0035
+death    lab_creatinine                  0.0032
+death          lab_egfr                  0.0027
+death           lab_bnp                  0.0025
+
+Done in 5.0 min
