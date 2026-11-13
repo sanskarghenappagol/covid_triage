@@ -61,5 +61,5 @@ Outputs: `table1_cohort1_test.csv`, `table2_cohort2.csv`, `table3_bootstrap_summ
 `table5_top_features.csv`, `fig_roc_prc_cohort2.png`, `fig_bootstrap_boxplots.png`, `all_candidates_cohort1_test.csv`.
 
 ## Team
-Member 1 : Sanskar Ghenappagol  SRN : PES1UG24CS614
+Member 1 : Sanskar Ghenappagol  SRN : PES1UG24CS614<br>
 Member 2 : Tilak Biradar        SRN : PES1UG24CS639
